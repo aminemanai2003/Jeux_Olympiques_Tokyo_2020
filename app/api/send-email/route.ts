@@ -5,13 +5,26 @@ export async function POST(request: Request) {
   try {
     const { to, message, attachment } = await request.json();
 
+    // Validation
+    if (!to || !attachment) {
+      return NextResponse.json(
+        { success: false, error: 'Email et pièce jointe requis' },
+        { status: 400 }
+      );
+    }
+
     // Create transporter with Gmail
-    const transporter = nodemailer.createTransporter({
-      service: 'gmail',
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD?.replace(/\s/g, ''), // Remove spaces
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
     // Convert base64 to buffer

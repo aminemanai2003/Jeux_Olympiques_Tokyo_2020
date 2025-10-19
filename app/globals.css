@@ -10,6 +10,14 @@
   --olympic-red: #DF0024;
 }
 
+.dark {
+  --olympic-gold: #FFC700;
+  --olympic-silver: #B0B0B0;
+  --olympic-bronze: #BD6F22;
+  --olympic-blue: #1E90FF;
+  --olympic-red: #FF1744;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -22,10 +30,20 @@ body {
   background: linear-gradient(135deg, #0085C7 0%, #1E3A8A 50%, #FFD700 100%);
 }
 
+.dark .olympic-rings {
+  background: linear-gradient(135deg, #1E90FF 0%, #0A2540 50%, #FFC700 100%);
+}
+
 .glass-effect {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @layer utilities {

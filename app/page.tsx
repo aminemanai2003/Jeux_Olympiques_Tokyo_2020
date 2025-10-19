@@ -4,7 +4,8 @@ import { useState } from 'react';
 import PowerBIEmbed from '@/components/PowerBIEmbed';
 import MLPredictor from '@/components/MLPredictor';
 import ExportButtons from '@/components/ExportButtons';
-import { Trophy, TrendingUp, Mail, FileDown, Sparkles } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
+import { Trophy, TrendingUp, Sparkles } from 'lucide-react';
 
 export default function Home() {
   const [showML, setShowML] = useState(false);
@@ -12,31 +13,34 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Header */}
-      <header className="bg-gradient-olympic shadow-2xl border-b-4 border-olympic-gold">
+      <header className="bg-gradient-olympic shadow-2xl border-b-4 border-olympic-gold dark:border-olympic-gold/50">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-4">
-              <div className="bg-white p-3 rounded-full shadow-lg">
+              <div className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg">
                 <Trophy className="w-10 h-10 text-olympic-gold" />
               </div>
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold text-white flex items-center gap-2">
-                  🏅 Tokyo 2020 Olympics
+                  🏅 Jeux Olympiques Tokyo 2020
                   <Sparkles className="w-6 h-6 text-olympic-gold animate-pulse" />
                 </h1>
-                <p className="text-blue-200 text-sm md:text-base">
-                  Business Intelligence Dashboard — Powered by Power BI & ML
+                <p className="text-blue-200 dark:text-gray-300 text-sm md:text-base">
+                  Tableau de Bord Intelligence d'Affaires — Power BI & Machine Learning
                 </p>
               </div>
             </div>
-            <div className="hidden md:flex items-center gap-2 bg-white/20 backdrop-blur-lg px-4 py-2 rounded-full">
-              <div className="flex gap-1">
-                <div className="w-3 h-3 bg-olympic-blue rounded-full"></div>
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-olympic-gold rounded-full"></div>
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-black rounded-full"></div>
+            <div className="flex items-center gap-3">
+              <div className="hidden md:flex items-center gap-2 bg-white/20 dark:bg-gray-800/50 backdrop-blur-lg px-4 py-2 rounded-full">
+                <div className="flex gap-1">
+                  <div className="w-3 h-3 bg-olympic-blue rounded-full"></div>
+                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-olympic-gold rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-black dark:bg-white rounded-full"></div>
+                </div>
               </div>
+              <ThemeToggle />
             </div>
           </div>
         </div>
@@ -49,23 +53,23 @@ export default function Home() {
             onClick={() => setShowML(false)}
             className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg ${
               !showML
-                ? 'bg-white text-olympic-blue scale-105'
-                : 'bg-white/20 text-white hover:bg-white/30'
+                ? 'bg-white dark:bg-gray-700 text-olympic-blue dark:text-olympic-gold scale-105'
+                : 'bg-white/20 dark:bg-gray-800/50 text-white hover:bg-white/30 dark:hover:bg-gray-700/50'
             }`}
           >
             <Trophy className="w-5 h-5" />
-            Power BI Dashboard
+            Tableau de Bord Power BI
           </button>
           <button
             onClick={() => setShowML(true)}
             className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg ${
               showML
-                ? 'bg-olympic-gold text-olympic-darkBlue scale-105'
-                : 'bg-white/20 text-white hover:bg-white/30'
+                ? 'bg-olympic-gold dark:bg-olympic-gold/90 text-olympic-darkBlue dark:text-gray-900 scale-105'
+                : 'bg-white/20 dark:bg-gray-800/50 text-white hover:bg-white/30 dark:hover:bg-gray-700/50'
             }`}
           >
             <TrendingUp className="w-5 h-5" />
-            ML Predictions
+            Prédictions ML
           </button>
         </div>
       </div>
@@ -78,7 +82,7 @@ export default function Home() {
             <ExportButtons />
             
             {/* Power BI Embed */}
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-white/50">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden border-4 border-white/50 dark:border-gray-700/50">
               <PowerBIEmbed />
             </div>
 
@@ -90,7 +94,7 @@ export default function Home() {
                     <Trophy className="w-6 h-6 text-olympic-darkBlue" />
                   </div>
                   <div>
-                    <p className="text-sm opacity-80">Total Countries</p>
+                    <p className="text-sm opacity-80">Pays Participants</p>
                     <p className="text-3xl font-bold">206</p>
                   </div>
                 </div>
@@ -101,7 +105,7 @@ export default function Home() {
                     <Sparkles className="w-6 h-6 text-olympic-darkBlue" />
                   </div>
                   <div>
-                    <p className="text-sm opacity-80">Total Athletes</p>
+                    <p className="text-sm opacity-80">Total Athlètes</p>
                     <p className="text-3xl font-bold">11,326</p>
                   </div>
                 </div>
@@ -112,7 +116,7 @@ export default function Home() {
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-sm opacity-80">Disciplines</p>
+                    <p className="text-sm opacity-80">Disciplines Sportives</p>
                     <p className="text-3xl font-bold">50</p>
                   </div>
                 </div>
@@ -125,13 +129,13 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-olympic-darkBlue text-white py-6 mt-12 border-t-4 border-olympic-gold">
+      <footer className="bg-olympic-darkBlue dark:bg-gray-900 text-white py-6 mt-12 border-t-4 border-olympic-gold dark:border-olympic-gold/50">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm opacity-80">
-            © 2024 Tokyo 2020 Olympics Dashboard | Created by Amine Manai
+            © 2024 Tableau de Bord Jeux Olympiques Tokyo 2020 | Créé par Amine Manai
           </p>
           <p className="text-xs opacity-60 mt-2">
-            Powered by Power BI, Next.js, TensorFlow.js & Tailwind CSS
+            Propulsé par Power BI, Next.js, Régression Linéaire Multiple & Tailwind CSS
           </p>
         </div>
       </footer>
