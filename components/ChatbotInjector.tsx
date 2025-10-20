@@ -8,9 +8,7 @@ export default function ChatbotInjector() {
     if (document.getElementById('yourgpt-chatbot')) return;
 
     // Widget config
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    window.YGC_WIDGET_ID = "b4c7dfdf-8b43-49a8-b686-5f63c170ae0a";
+    (window as any).YGC_WIDGET_ID = "b4c7dfdf-8b43-49a8-b686-5f63c170ae0a";
 
     const script = document.createElement('script');
     script.src = 'https://widget.yourgpt.ai/script.js';
