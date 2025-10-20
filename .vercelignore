@@ -1,0 +1,13 @@
+# Fichiers de développement
+.env.local
+.env*.local
+*.log
+
+# Fichiers temporaires
+.DS_Store
+Thumbs.db
+
+# Documentation de développement
+START_HERE.md
+DEPLOYMENT.md
+SITE_COMPLET.md
