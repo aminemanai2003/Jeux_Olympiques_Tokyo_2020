@@ -132,7 +132,7 @@ export default function Home() {
       <footer className="bg-olympic-darkBlue dark:bg-gray-900 text-white py-6 mt-12 border-t-4 border-olympic-gold dark:border-olympic-gold/50">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm opacity-80">
-            © 2024 Tableau de Bord Jeux Olympiques Tokyo 2020 | Créé par Amine Manai
+            © 2024 Tableau de Bord Jeux Olympiques Tokyo 2020 | Créé par Alfari9
           </p>
           <p className="text-xs opacity-60 mt-2">
             Propulsé par Power BI, Next.js, Régression Linéaire Multiple & Tailwind CSS

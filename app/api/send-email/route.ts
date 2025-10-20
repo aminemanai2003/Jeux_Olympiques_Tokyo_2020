@@ -3,14 +3,11 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
   try {
-    const { to, message, attachment } = await request.json();
+    const { to, message, attachment, filename } = await request.json();
 
     // Validation
     if (!to || !attachment) {
-      return NextResponse.json(
-        { success: false, error: 'Email et pièce jointe requis' },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, error: 'Email et pièce jointe requis' }, { status: 400 });
     }
 
     // Create transporter with Gmail
@@ -22,14 +19,32 @@ export async function POST(request: Request) {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD?.replace(/\s/g, ''), // Remove spaces
       },
-      tls: {
-        rejectUnauthorized: false
-      }
+      tls: { rejectUnauthorized: false },
     });
 
-    // Convert base64 to buffer
-    const base64Data = attachment.replace(/^data:image\/png;base64,/, '');
+    // Parse data URI if present: data:<mime>;base64,<data>
+    let mime = 'application/octet-stream';
+    let base64Data = '';
+
+    if (typeof attachment === 'string') {
+      const match = attachment.match(/^data:(.+);base64,(.*)$/s);
+      if (match) {
+        mime = match[1];
+        base64Data = match[2];
+      } else {
+        // Maybe raw base64 without prefix - assume PDF or PNG depending on filename
+        base64Data = attachment;
+        if (filename && filename.toLowerCase().endsWith('.pdf')) mime = 'application/pdf';
+        else if (filename && filename.toLowerCase().endsWith('.png')) mime = 'image/png';
+        else mime = 'application/pdf';
+      }
+    } else {
+      return NextResponse.json({ success: false, error: 'Attachment doit être une chaîne base64 ou data URI' }, { status: 400 });
+    }
+
     const buffer = Buffer.from(base64Data, 'base64');
+
+    const attachName = filename || (`report_${Date.now()}` + (mime === 'application/pdf' ? '.pdf' : mime === 'image/png' ? '.png' : '.bin'));
 
     // Send email
     await transporter.sendMail({
@@ -78,9 +93,9 @@ export async function POST(request: Request) {
       `,
       attachments: [
         {
-          filename: `Tokyo2020_Report_${Date.now()}.png`,
+          filename: attachName,
           content: buffer,
-          contentType: 'image/png',
+          contentType: mime,
         },
       ],
     });
@@ -88,9 +103,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error: any) {
     console.error('Email send error:', error);
-    return NextResponse.json(
-      { success: false, error: error.message || 'Failed to send email' },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: error.message || 'Failed to send email' }, { status: 500 });
   }
 }

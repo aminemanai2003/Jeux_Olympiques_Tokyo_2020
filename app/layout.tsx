@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
+import dynamic from 'next/dynamic';
+
+const ChatbotInjector = dynamic(() => import('@/components/ChatbotInjector'), { ssr: false });
 
 export const metadata: Metadata = {
   title: "Tableau de Bord Jeux Olympiques Tokyo 2020 | Intelligence d'Affaires",
@@ -17,6 +20,7 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <body className="antialiased bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 dark:from-gray-900 dark:via-gray-800 dark:to-black transition-colors duration-300">
         <ThemeProvider>
+          <ChatbotInjector />
           {children}
         </ThemeProvider>
       </body>
