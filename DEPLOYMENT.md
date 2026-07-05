@@ -48,7 +48,7 @@ npm start
 4. Vercel will auto-detect Next.js and deploy
 5. Add environment variables in Vercel dashboard:
    - `GMAIL_USER`: aminemanai456123@gmail.com
-   - `GMAIL_APP_PASSWORD`: vpnu jans ifqf zlid
+   - `GMAIL_APP_PASSWORD`: votre-mot-de-passe-application
 
 ## 🔧 Environment Variables
 
@@ -56,7 +56,7 @@ Create `.env.local` file (already included):
 
 ```env
 GMAIL_USER=aminemanai456123@gmail.com
-GMAIL_APP_PASSWORD=vpnu jans ifqf zlid
+GMAIL_APP_PASSWORD=votre-mot-de-passe-application
 POWERBI_REPORT_ID=d93535cb-c56f-47c2-b958-bc45f1a323cd
 POWERBI_CTID=604f1a96-cbe8-43f8-abbf-f8eaf5d85730
 ```

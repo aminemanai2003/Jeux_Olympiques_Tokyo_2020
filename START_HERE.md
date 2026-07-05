@@ -54,7 +54,7 @@ Puis ouvrez: **http://localhost:3000**
 ## 📧 EMAIL CONFIGURÉ
 
 - **Compte**: aminemanai456123@gmail.com
-- **App Password**: vpnu jans ifqf zlid (déjà configuré)
+- **App Password**: votre-mot-de-passe-application (à configurer)
 - Les snapshots seront envoyés depuis ce compte
 
 ---
@@ -87,7 +87,7 @@ Puis ouvrez: **http://localhost:3000**
 3. Import project → Sélectionnez `Jeux_Olympiques_Tokyo_2020`
 4. Ajoutez les variables d'environnement:
    - `GMAIL_USER`: aminemanai456123@gmail.com
-   - `GMAIL_APP_PASSWORD`: vpnu jans ifqf zlid
+   - `GMAIL_APP_PASSWORD`: votre-mot-de-passe-application
 5. Click "Deploy"
 6. ✅ Votre site sera live en 2 minutes !
 

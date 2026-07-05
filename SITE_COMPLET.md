@@ -64,7 +64,7 @@ Ce script va :
 ### 4️⃣ Send via Email
 - Gmail SMTP configuré
 - Compte : aminemanai456123@gmail.com
-- App Password : vpnu jans ifqf zlid
+- App Password : votre-mot-de-passe-application
 - Snapshot du dashboard envoyé en pièce jointe
 - Template HTML professionnel
 
@@ -136,7 +136,7 @@ Tokyo2020_Olympics_Website/
 Fichier `.env.local` :
 ```env
 GMAIL_USER=aminemanai456123@gmail.com
-GMAIL_APP_PASSWORD=vpnu jans ifqf zlid
+GMAIL_APP_PASSWORD=votre-mot-de-passe-application
 POWERBI_REPORT_ID=d93535cb-c56f-47c2-b958-bc45f1a323cd
 POWERBI_CTID=604f1a96-cbe8-43f8-abbf-f8eaf5d85730
 ```
